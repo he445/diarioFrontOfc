@@ -1,12 +1,16 @@
 import Modal from 'react-modal';
 import { useEffect, useState } from 'react';
+import './navBar.css'
 
-Modal.setAppElement('#root');
+
  function navbar(){
     return (
-        <div>
+        <nav>
             <h1>Diario</h1>
-        </div>
+        <hr/>
+    </nav>
+      
+        
     )
  }
  export default navbar;
