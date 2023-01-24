@@ -5,8 +5,8 @@ import HomeR from "../components/homeR/homeR"
 function home (){
     return(
         <div>
-            <HomeL/>
-            <HomeR/>
+            {/* <HomeL/>
+            <HomeR/> */}
             <HomeC/>
             
         </div>
