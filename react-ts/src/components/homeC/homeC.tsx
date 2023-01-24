@@ -55,7 +55,7 @@ async function handleSubmit(e:FormEvent<HTMLFormElement>) {
             id="lname"
             name="text"
             onChange={(event) => {
-              setNewPost({ ...newPost, body: event.target.value });
+              setNewPost({ ...newPost, content: event.target.value });
               console.log('aoba', newPost);
             }}
           />

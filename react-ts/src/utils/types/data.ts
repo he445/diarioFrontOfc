@@ -15,7 +15,7 @@ export type User = {
   export type Post = {
     id: String;
     title: String;
-    body: String;
+    content: String;
     likedBy: User[];
     comments: Comment[];
     author: User;
