@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { Post,User } from '../types/data';
-import { LoginRequest } from '../types/request'
+import { LoginRequest, UpdatePostPayload } from '../types/request'
 
 axios.defaults.baseURL = "https://diarioapiofc.onrender.com/";
 axios.defaults.headers.post["Content-Type"] = "application/json";
@@ -72,4 +72,19 @@ axios.interceptors.request.use(
         }
       },
 
-}
+      update: async (post:Post) => {
+        const postUpdated = await axios.patch(
+        `/post/${post.id}`,
+        post,
+        );
+        return postUpdated;
+      },
+      delete: async (postId:string) => {
+        const isDeleted = await axios.delete(
+          `post/${postId}`,
+        );
+        return isDeleted;
+      },
+    };
+
+

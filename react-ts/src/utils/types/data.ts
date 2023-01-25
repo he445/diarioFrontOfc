@@ -13,13 +13,13 @@ export type User = {
     role: String;
   };
   export type Post = {
-    id: String;
-    title: String;
-    content: String;
+    id: string;
+    title: string;
+    content: string;
     likedBy: User[];
     comments: Comment[];
     author: User;
-    profileId: String;
+    profileId: string;
   };
   
   export type Comment = {

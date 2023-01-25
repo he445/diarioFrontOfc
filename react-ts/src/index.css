@@ -2,12 +2,8 @@
   display: flex;
 flex-direction: column;
 align-items: center;
-/* padding: 0px;
-gap: 17px; */
-
-
-/* width: 1529.03px;
-height: 523px; */
+width: 100vw;
+height: 100vh;
 
 }
 

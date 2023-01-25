@@ -28,19 +28,19 @@ import { useEffect, useState } from 'react';
  
     return (
         <section className= 'loginArea'>
-        <form onSubmit={handleSubmit}>
-          <input placeholder="Email"
+        <form className='loginForm' onSubmit={handleSubmit}>
+          <input className='loginInput' placeholder="Email"
           name="email"
               type="email"
               required
               >
           </input>
-          <input placeholder="Password"
+          <input className='loginInput' placeholder="Password"
            name="password"
               type="password"
               required>
           </input>
-          <button type="submit">login
+          <button className='loginbutton' type="submit">login
           </button>
           
         </form>
