@@ -77,7 +77,7 @@ function homeC() {
   return (
     <div className="home">
     <section className="feature">
-    <input type="text" onChange={(e) => {
+    <input type="text" placeholder="search" onChange={(e) => {
           setSearch(e.currentTarget.value);
         }} />
       <form className="formM" onSubmit={handleSubmit}>
