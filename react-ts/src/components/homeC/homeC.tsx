@@ -72,7 +72,7 @@ function homeC() {
 
   useEffect(() => {
     getlist();
-  }, []);
+  }, [control]);
 
   return (
     <div className="home">
