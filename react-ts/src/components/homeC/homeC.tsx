@@ -4,6 +4,7 @@ import { Post } from "../../utils/types/data";
 import  "./homec.css";
 function homeC() {
   const [list, setlist] = useState<Post[]>([]);
+  const [search, setSearch] = useState<string>('');
   const [uniqueList, setUniqueList] = useState<Post>({} as Post);
   const [newPost, setNewPost] = useState<Post>({} as Post);
   const [edtedList, setEdtedList] = useState(false);
@@ -60,6 +61,9 @@ function homeC() {
       console.log(err);
     }
   };
+  const seachPost= list.filter((list)=>{
+    return list.title.toLocaleLowerCase().includes(search.toLocaleLowerCase())
+})
 
   function updatePage() {
     setControl(!control);
@@ -68,11 +72,14 @@ function homeC() {
 
   useEffect(() => {
     getlist();
-  }, [control]);
+  }, []);
 
   return (
     <div className="home">
     <section className="feature">
+    <input type="text" onChange={(e) => {
+          setSearch(e.currentTarget.value);
+        }} />
       <form className="formM" onSubmit={handleSubmit}>
         <label id="fname">Titulo:</label>
         <input
@@ -130,7 +137,7 @@ function homeC() {
           </form>
         ) : (
           <ul className="featureUL">
-            {list.map((list, index) => {
+            {seachPost.map((list, index) => {
               return (
                 <li className="textlist">
                   <h2 className="title">{list.title}</h2>
