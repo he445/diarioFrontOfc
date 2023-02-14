@@ -25,12 +25,36 @@
   border: none;
   box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1);
 }
-.formM{
-  width: 40vw;
+.formM {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #fff;
+  width: 100%;
+  height: 40vh;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.2);
 }
+
 .formM label {
   font-size: 18px;
   margin-right: 10px;
+}
+
+.formM input[type="text"],
+.formM textarea {
+  width: 100%;
+  height: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  border: none;
+  box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1);
+}
+
+.formM textarea {
+  height: 200px;
 }
 
 .formM button {
@@ -48,11 +72,6 @@
   background-color: #0d8ddb;
 }
 
-.featureUL {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-}
 
 .textlist {
   padding: 20px;
@@ -60,6 +79,7 @@
   background-color: #fff;
   border-radius: 5px;
   box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.2);
+  list-style: none;
 }
 
 .title {
