@@ -1,10 +1,10 @@
 import { StrictMode, useEffect, useState, FormEvent } from "react";
 import { api } from "../../utils/api/api";
 import { Post } from "../../utils/types/data";
-import  "./homec.css";
+import "./homec.css";
 function homeC() {
   const [list, setlist] = useState<Post[]>([]);
-  const [search, setSearch] = useState<string>('');
+  const [search, setSearch] = useState<string>("");
   const [uniqueList, setUniqueList] = useState<Post>({} as Post);
   const [newPost, setNewPost] = useState<Post>({} as Post);
   const [edtedList, setEdtedList] = useState(false);
@@ -46,10 +46,10 @@ function homeC() {
     setEdtedList(false);
   };
 
-  const deleteList = async (listid: string,profileId:string) => {
-    const ownwerId =JSON.parse(localStorage.getItem("user") ?? "").id;
-    console.log(ownwerId)
-    if(profileId == ownwerId){
+  const deleteList = async (listid: string, profileId: string) => {
+    const ownwerId = JSON.parse(localStorage.getItem("user") ?? "").id;
+    console.log(ownwerId);
+    if (profileId == ownwerId) {
       try {
         await api.delete(listid);
         const newList = list;
@@ -63,13 +63,13 @@ function homeC() {
       } catch (err) {
         console.log(err);
       }
+    } else {
+      alert("esse post n é seu");
     }
-    else{alert ("esse post n é seu")}
-   
   };
-  const seachPost= list.filter((list)=>{
-    return list.title.toLocaleLowerCase().includes(search.toLocaleLowerCase())
-})
+  const seachPost = list.filter((list) => {
+    return list.title.toLocaleLowerCase().includes(search.toLocaleLowerCase());
+  });
 
   function updatePage() {
     setControl(!control);
@@ -82,100 +82,104 @@ function homeC() {
 
   return (
     <div className="home">
-    <section className="feature">
-    <input type="text" placeholder="search" onChange={(e) => {
-          setSearch(e.currentTarget.value);
-        }} />
-      <form className="formM" onSubmit={handleSubmit}>
-        <label id="fname">Titulo:</label>
+      <section className="feature">
         <input
           type="text"
-          id="fname"
-          name="title"
-          onChange={(event) => {
-            setNewPost({ ...newPost, title: event.target.value });
-            console.log("aoba", newPost);
+          placeholder="search"
+          onChange={(e) => {
+            setSearch(e.currentTarget.value);
           }}
         />
-        <label id="lnameT">Texto</label>
+        <form className="formM" onSubmit={handleSubmit}>
+          <label id="fname">Titulo:</label>
+          <input
+            type="text"
+            id="fname"
+            name="title"
+            onChange={(event) => {
+              setNewPost({ ...newPost, title: event.target.value });
+              console.log("aoba", newPost);
+            }}
+          />
+          <label id="lnameT">Texto</label>
 
-        <textarea
-          id="lname"
-          name="text"
-          onChange={(event) => {
-            setNewPost({ ...newPost, content: event.target.value });
-            console.log("aoba", newPost);
-          }}
-        />
-        <button type="submit" className="textbnt2">
-          Submit
-        </button>
-      </form>
-      <div>
-        {edtedList ? (
-          <form className="formM" onSubmit={updatePost}>
-                        
-            <input
-              type="text"
-              id="fname"
-              name="title"
-              defaultValue={uniqueList.title}
-              onChange={(event) => {
-                setUniqueList({ ...uniqueList, title: event.target.value });
-                console.log("aoba", uniqueList);
-              }}
-            />
-                                                  
-            <textarea
-              id="lname"
-              name="text"
-              defaultValue={uniqueList.content}
-              onChange={(event) => {
-                setUniqueList({ ...uniqueList, content: event.target.value });
-                console.log("aoba", uniqueList);
-              }}
-            />
-                        
-            <button type="submit" className="textbnt2">
-                            Submit             
-            </button>
-                      
-          </form>
-        ) : (
-          <ul className="featureUL">
-            {seachPost.map((list, index) => {
-              return (
-                <li className="textlist">
-                  <h2 className="title">{list.title}</h2>
+          <textarea
+            id="lname"
+            name="text"
+            onChange={(event) => {
+              setNewPost({ ...newPost, content: event.target.value });
+              console.log("aoba", newPost);
+            }}
+          />
+          <button type="submit" className="textbnt2">
+            Submit
+          </button>
+        </form>
+        <div>
+          {edtedList ? (
+            <form className="formM" onSubmit={updatePost}>
+                          
+              <input
+                type="text"
+                id="fname"
+                name="title"
+                defaultValue={uniqueList.title}
+                onChange={(event) => {
+                  setUniqueList({ ...uniqueList, title: event.target.value });
+                  console.log("aoba", uniqueList);
+                }}
+              />
+                                                    
+              <textarea
+                id="lname"
+                name="text"
+                defaultValue={uniqueList.content}
+                onChange={(event) => {
+                  setUniqueList({ ...uniqueList, content: event.target.value });
+                  console.log("aoba", uniqueList);
+                }}
+              />
+                          
+              <button type="submit" className="textbnt2">
+                              Submit             
+              </button>
+                        
+            </form>
+          ) : (
+            <ul className="featureUL">
+              {seachPost.map((list, index) => {
+                return (
+                  <li className="textlist">
+                    <h2 className="title">{list.title}</h2>
 
-                  <p className="pp">{list.content}</p>
-                  <div className="btn">
-                  <button
-                    className="textbnt2"
-                    onClick={() => {
-                      console.log(list.authorId)
-                      deleteList(list.id, list.authorId);
-                    }}
-                  >
-                    delete
-                  </button>
-                  <button
-                    className="textbnt3"
-                    onClick={() => {
-                      setUniqueList(list);
-                      setEdtedList(true);
-                    }}
-                  >
-                    update
-                  </button>
-                  </div>
-                </li>
-              );
-            })}
-          </ul>
-        )}
-      </div>
-    </section>
+                    <p className="pp">{list.content}</p>
+                    <div className="btn">
+                      <button
+                        className="textbnt2"
+                        onClick={() => {
+                          console.log(list.authorId);
+                          deleteList(list.id, list.authorId);
+                        }}
+                      >
+                        delete
+                      </button>
+                      <button
+                        className="textbnt3"
+                        onClick={() => {
+                          setUniqueList(list);
+                          setEdtedList(true);
+                        }}
+                      >
+                        update
+                      </button>
+                    </div>
+                  </li>
+                );
+              })}
+            </ul>
+          )}
+        </div>
+      </section>
     </div>
   );
 }
