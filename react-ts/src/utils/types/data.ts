@@ -19,7 +19,7 @@ export type User = {
     likedBy: User[];
     comments: Comment[];
     author: User;
-    profileId: string;
+    authorId: string;
   };
   
   export type Comment = {

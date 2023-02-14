@@ -11,7 +11,7 @@ function homeC() {
   const [control, setControl] = useState(false);
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    newPost.profileId = JSON.parse(localStorage.getItem("user") ?? "").id;
+    newPost.authorId = JSON.parse(localStorage.getItem("user") ?? "").id;
     try {
       await api.creat(newPost);
       console.log("ok");
@@ -31,7 +31,7 @@ function homeC() {
   };
   const updatePost = async (e: FormEvent<HTMLFormElement>) => {
     const upPost = uniqueList;
-    upPost.profileId = JSON.parse(localStorage.getItem("user") ?? "").id;
+    upPost.authorId = JSON.parse(localStorage.getItem("user") ?? "").id;
     e.preventDefault();
     const newList = list;
     newList.map((list, index) => {
