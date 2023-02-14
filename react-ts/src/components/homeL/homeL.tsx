@@ -74,7 +74,7 @@ function homeL() {
         contentLabel="form Create"
         style={customStyles}
       >
-        <form onSubmit={updatePost}>
+        <form className="formM" onSubmit={updatePost}>
           <input type="text" id="fname" name="uname" defaultValue={user.name} />
           <input
             type="text"
@@ -86,6 +86,7 @@ function homeL() {
             type="text"
             id="fname"
             name="image"
+            placeholder="image url"
             defaultValue={user.image}
           />
           <button type="submit" className="btn-submit">
