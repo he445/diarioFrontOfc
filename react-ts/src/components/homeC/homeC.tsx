@@ -46,20 +46,26 @@ function homeC() {
     setEdtedList(false);
   };
 
-  const deleteList = async (listid: string) => {
-    try {
-      await api.delete(listid);
-      const newList = list;
-      newList.map((list, index) => {
-        if (list.id === listid) {
-          newList.splice(index, 1);
-          setlist(newList);
-        }
-      });
-      updatePage();
-    } catch (err) {
-      console.log(err);
+  const deleteList = async (listid: string,profileId:string) => {
+    const ownwerId =JSON.parse(localStorage.getItem("user") ?? "").id;
+    console.log(ownwerId)
+    if(profileId == ownwerId){
+      try {
+        await api.delete(listid);
+        const newList = list;
+        newList.map((list, index) => {
+          if (list.id === listid) {
+            newList.splice(index, 1);
+            setlist(newList);
+          }
+        });
+        updatePage();
+      } catch (err) {
+        console.log(err);
+      }
     }
+    else{alert ("esse post n é seu")}
+   
   };
   const seachPost= list.filter((list)=>{
     return list.title.toLocaleLowerCase().includes(search.toLocaleLowerCase())
@@ -147,7 +153,8 @@ function homeC() {
                   <button
                     className="textbnt2"
                     onClick={() => {
-                      deleteList(list.id);
+                      console.log(list.authorId)
+                      deleteList(list.id, list.authorId);
                     }}
                   >
                     delete

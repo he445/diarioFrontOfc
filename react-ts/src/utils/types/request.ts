@@ -10,3 +10,9 @@ export type UpdatePostPayload = {
   title: string;
   content: string;
 };
+
+export type newUser = {
+  name: string;
+  email: string;
+  image: string;
+};

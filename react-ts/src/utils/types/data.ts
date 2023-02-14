@@ -1,16 +1,16 @@
 export type User = {
-    id: String;
-    name: String;
-    email: String;
-    password: String;
-    image?: String;
-    bio?: String;
+    id: string;
+    name: string;
+    email: string;
+    password: string;
+    image?: string;
+    bio?: string;
     posts: Post[];
     likes: Post[];
     comments: Comment[];
     following: User[];
     followers: User[];
-    role: String;
+    role: string;
   };
   export type Post = {
     id: string;

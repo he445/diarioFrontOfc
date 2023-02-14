@@ -44,6 +44,8 @@ import { useEffect, useState } from 'react';
           </button>
           
         </form>
+        <button onClick={() =>navigate("/creat") } className='loginbutton' type="submit">creat
+          </button>
       </section>
       
         

@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { Post,User } from '../types/data';
-import { LoginRequest, UpdatePostPayload } from '../types/request'
+import { LoginRequest, newUser, UpdatePostPayload } from '../types/request'
 
 axios.defaults.baseURL = "https://diarioapiofc.onrender.com/";
 axios.defaults.headers.post["Content-Type"] = "application/json";
@@ -85,6 +85,38 @@ axios.interceptors.request.use(
         );
         return isDeleted;
       },
-    };
+      creatUser: async (users:User) => {
+        console.log(localStorage) 
+            try {
+              const newUser = await axios.post(
+                 '/users',
+                users,
+              );
+              return newUser;
+            } catch (err) {
+              console.log(err);
+            }
+          },
+          getUser:async (userId:string) => {
+            try {
+              const user= await axios.get(
+               `/users/${userId}`,
+              );
+              return user.data;
+            } catch (err) {
+              console.log(err, 'erro no servidor');
+            }
+          },
+          updateUser: async (user:newUser,userId:string) => {
+            const userUpdated = await axios.patch(
+            `/post/${userId}`,
+            user,
+            );
+            return  userUpdated;
+          },
+          };
+
+
+  
 
 
