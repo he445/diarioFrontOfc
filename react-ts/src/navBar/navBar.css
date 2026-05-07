@@ -1,6 +1,7 @@
-/* navBar.css */
+/* navBar.css (COMPLETO) */
+
+/* Barra geral */
 .navbar {
-  /* Retiramos o display: flex daqui. A navbar agora é só o "fundo" e a "borda" */
   background: var(--bg-paper);
   position: sticky;
   top: 0;
@@ -9,13 +10,13 @@
   margin-bottom: 2rem;
 }
 
-/* Nova classe que vai dentro do container para separar os itens */
+/* O Segredo do alinhamento está aqui: */
 .nav-content {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-between; /* Mantém o H1 na esquerda e o Perfil na Direita */
   align-items: center;
   width: 100%;
-  padding: 24px 0; /* O respiro fica aqui agora */
+  padding: 20px 0;
 }
 
 .navbar h1 {
@@ -23,12 +24,13 @@
   font-size: 1.5rem;
   letter-spacing: -0.02em;
   text-transform: uppercase;
-  margin: 0; /* Garante que o H1 não empurre as coisas */
+  margin: 0;
 }
 
+/* Menu de Links */
 .nav-links {
   display: flex;
-  gap: 30px; /* Aumentei um pouco o espaço entre "Início" e "Escrever" */
+  gap: 30px;
 }
 
 .nav-links a {
@@ -38,17 +40,141 @@
   text-transform: uppercase;
   letter-spacing: 0.05em;
   transition: opacity 0.2s;
+  text-decoration: none;
 }
 
 .nav-links a:hover {
   opacity: 0.5;
 }
 
+/* Perfil */
 .user-profile {
   display: flex;
   align-items: center;
   gap: 10px;
   cursor: pointer;
-  /* Se não tiver avatar ainda, defina uma largura mínima para a div não sumir e bugar o layout */
-  min-width: 40px; 
+}
+
+.user-name {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.1rem;
+}
+
+/* -----------------------------
+   Estilos do Modal Editorial
+------------------------------ */
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+  border-bottom: 1px solid var(--color-ink);
+  padding-bottom: 10px;
+}
+
+.modal-title {
+  font-family: var(--font-serif);
+  font-size: 1.8rem;
+  font-weight: 400;
+  margin: 0;
+}
+
+.close-btn {
+  background: transparent;
+  border: none;
+  font-family: var(--font-sans);
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 0;
+}
+
+.close-btn:hover {
+  color: var(--color-muted);
+  background: transparent;
+}
+
+.modal-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-form label {
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 5px;
+  color: var(--color-muted);
+}
+
+.modal-input {
+  width: 100%;
+  padding: 10px 14px;
+  margin-bottom: 20px;
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  color: var(--color-ink);
+  background: transparent;
+  border: 1px solid var(--color-muted);
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.modal-input:focus {
+  border-color: var(--color-ink);
+}
+
+.modal-btn {
+  padding: 12px 20px;
+  font-size: 1rem;
+  font-family: var(--font-sans);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-top: 10px;
+}
+
+.modal-btn.primary {
+  background-color: var(--color-ink);
+  color: var(--bg-paper);
+  border: 1px solid var(--color-ink);
+}
+
+.modal-btn.primary:hover {
+  background-color: transparent;
+  color: var(--color-ink);
+}
+
+.modal-danger-zone {
+  margin-top: 30px;
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px dashed var(--color-muted);
+  padding-top: 15px;
+}
+
+.text-btn {
+  background: transparent;
+  border: none;
+  padding: 0;
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.text-btn:hover {
+  background: transparent;
+  color: var(--color-muted);
+}
+
+.text-btn.danger {
+  color: #d32f2f;
+}
+
+.text-btn.danger:hover {
+  color: #9a0007;
 }

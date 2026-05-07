@@ -1,44 +1,95 @@
-.creatArea {
+/* create.css */
+.createArea {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 2rem;
-  height: 50vh;
-  width: 30vw;
+  min-height: calc(100vh - 150px);
+  padding: 20px;
 }
 
-.formCreate{
+.createBox {
+  width: 100%;
+  max-width: 400px;
+  padding: 40px;
+  /* Sem sombras, apenas linha de contorno */
+  border: 1px solid var(--color-ink);
+  background-color: var(--bg-paper);
+}
+
+.createTitle {
+  font-family: var(--font-serif);
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 30px;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  color: var(--color-ink);
+}
+
+.formCreate {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 }
 
-.formCreate .creatInput {
+.createInput {
   width: 100%;
-  padding: 10px;
-  margin: 10px 0;
-  font-size: 16px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  box-sizing: border-box;
+  padding: 12px 14px;
+  margin-bottom: 20px;
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  color: var(--color-ink);
+  background: transparent;
+  border: 1px solid var(--color-muted);
+  outline: none;
+  transition: border-color 0.2s;
 }
 
-.formCreate button {
+.createInput::placeholder {
+  color: var(--color-muted);
+}
+
+.createInput:focus {
+  border-color: var(--color-ink);
+}
+
+/* Botões */
+.createBtn {
   width: 100%;
-  background-color: #4caf50;
-  color: white;
   padding: 14px 20px;
-  margin: 10px 0;
-  border: none;
-  border-radius: 5px;
+  font-size: 1rem;
+  font-family: var(--font-sans);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: all 0.2s ease;
 }
 
-.formCreate button:hover {
-  background-color: #3e8e41;
+.createBtn.primary {
+  background-color: var(--color-ink);
+  color: var(--bg-paper);
+  border: 1px solid var(--color-ink);
+}
+
+.createBtn.primary:hover {
+  background-color: transparent;
+  color: var(--color-ink);
+}
+
+.createDivider {
+  text-align: center;
+  margin: 15px 0;
+  font-family: var(--font-serif);
+  color: var(--color-muted);
+  font-style: italic;
+}
+
+.createBtn.secondary {
+  background-color: transparent;
+  color: var(--color-ink);
+  border: 1px solid var(--color-ink);
+}
+
+.createBtn.secondary:hover {
+  background-color: var(--color-ink);
+  color: var(--bg-paper);
 }
