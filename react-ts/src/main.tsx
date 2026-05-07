@@ -3,7 +3,7 @@ import ReactDOM from "react-dom/client";
 import NavBar from "./navBar/navbar";
 import Login from "./login/login";
 import Creat from "./create/creat";
-import Home from "./home/home";
+import Home from "./components/homeC/home";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./index.css";
 
@@ -13,7 +13,7 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
       <NavBar />
       <Routes>
         <Route path="/" element={<Login />} />
-        <Route path="/home" element={<Home />} />
+        <Route path="/home" element={<Home/>} />
         <Route path="/creat" element={<Creat />} />
       </Routes>
     </BrowserRouter>

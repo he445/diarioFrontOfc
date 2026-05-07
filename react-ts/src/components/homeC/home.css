@@ -1,0 +1,197 @@
+/* home.css */
+
+.home-container {
+  padding-bottom: 50px;
+}
+
+/* -----------------------------
+   Barra de Pesquisa Minimalista
+------------------------------ */
+.search-section {
+  margin-bottom: 40px;
+}
+
+.search-input {
+  width: 100%;
+  padding: 15px 0;
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  font-style: italic;
+  color: var(--color-ink);
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--color-muted);
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+.search-input::placeholder {
+  color: #a0a0a0;
+}
+
+.search-input:focus {
+  border-bottom-color: var(--color-ink);
+}
+
+/* -----------------------------
+   Editor de Texto (Criar/Editar)
+------------------------------ */
+.editor-section {
+  margin-bottom: 60px;
+}
+
+.editor-form {
+  border: 1px solid var(--color-ink);
+  background-color: var(--bg-paper);
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+}
+
+.editor-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px dashed var(--color-muted);
+}
+
+.editor-header h3 {
+  margin: 0;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-muted);
+}
+
+.editor-title {
+  font-family: var(--font-serif);
+  font-size: 2.2rem;
+  color: var(--color-ink);
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--color-ink);
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+  outline: none;
+}
+
+.editor-content {
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: var(--color-ink);
+  background: transparent;
+  border: none;
+  min-height: 200px;
+  resize: vertical;
+  outline: none;
+  margin-bottom: 30px;
+}
+
+.btn-submit {
+  align-self: flex-end;
+  background-color: var(--color-ink);
+  color: var(--bg-paper);
+  font-family: var(--font-sans);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 12px 24px;
+  border: 1px solid var(--color-ink);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-submit:hover {
+  background-color: transparent;
+  color: var(--color-ink);
+}
+
+.btn-cancel {
+  background: transparent;
+  border: none;
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+/* -----------------------------
+   Feed de Textos (Listagem)
+------------------------------ */
+.feed-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.post-card {
+  padding: 40px 0;
+  border-bottom: 1px solid var(--color-ink);
+}
+
+.post-card:first-child {
+  border-top: 1px solid var(--color-ink);
+}
+
+.post-title {
+  font-family: var(--font-serif);
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.post-text {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  line-height: 1.8;
+  color: var(--color-ink);
+  margin-bottom: 30px;
+  white-space: pre-wrap; /* Mantém as quebras de linha que o usuário digitou no textarea! */
+}
+
+/* Ações (Editar/Excluir) */
+.post-actions {
+  display: flex;
+  gap: 20px;
+}
+
+.btn-action {
+  background: transparent;
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border: 1px solid var(--color-ink);
+  padding: 8px 16px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-action.edit:hover {
+  background: var(--color-ink);
+  color: var(--bg-paper);
+}
+
+.btn-action.delete {
+  border-color: transparent;
+  color: #d32f2f;
+  text-decoration: underline;
+  padding: 8px 0;
+}
+
+.btn-action.delete:hover {
+  color: #9a0007;
+}
+
+/* Estado vazio (sem posts) */
+.empty-state {
+  text-align: center;
+  padding: 60px 0;
+  font-family: var(--font-serif);
+  font-style: italic;
+  color: var(--color-muted);
+  font-size: 1.2rem;
+}

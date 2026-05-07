@@ -173,8 +173,50 @@
 
 .text-btn.danger {
   color: #d32f2f;
-}
+}k
 
 .text-btn.danger:hover {
   color: #9a0007;
+}
+
+/* -----------------------------
+   Responsividade (Telas Menores)
+------------------------------ */
+
+@media (max-width: 650px) {
+  /* Permite que os itens quebrem para a linha de baixo se faltar espaço */
+  .nav-content {
+    flex-wrap: wrap; 
+    padding: 15px 0;
+  }
+
+  /* Reduz um pouquinho o título no celular */
+  .navbar h1 {
+    font-size: 1.3rem;
+  }
+
+  /* Esconde a palavra "Perfil/Nome" no celular para poupar espaço, deixando só a foto/ícone */
+  .user-name {
+    display: none; 
+  }
+
+  /* Joga os links para a linha de baixo */
+  .nav-links {
+    order: 3; /* Faz os links serem o último elemento a renderizar */
+    width: 100%; /* Ocupa a tela toda */
+    justify-content: center; /* Centraliza os links */
+    margin-top: 15px; /* Dá um espaço do título */
+    padding-top: 15px;
+    gap: 40px; /* Espaço entre 'Início' e 'Escrever' no celular */
+    
+    /* Uma linha sutil separando o cabeçalho dos links (estilo jornal) */
+    border-top: 1px dashed var(--color-muted); 
+  }
+}
+
+/* Responsividade extra para telas MUITO pequenas (ex: iPhone SE) */
+@media (max-width: 400px) {
+  .nav-links {
+    gap: 20px;
+  }
 }
