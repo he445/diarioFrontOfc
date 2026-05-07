@@ -2,7 +2,7 @@ import axios from "axios";
 import { Post, User } from "../types/data";
 import { LoginRequest, newUser, UpdatePostPayload } from "../types/request";
 
-axios.defaults.baseURL = "https://diarioapiofc.onrender.com/";
+axios.defaults.baseURL = "https://project-diarioofc.onrender.com";
 axios.defaults.headers.post["Content-Type"] = "application/json";
 
 axios.interceptors.request.use(

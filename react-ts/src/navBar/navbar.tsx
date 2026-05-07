@@ -7,20 +7,29 @@ import './navBar.css'
 import { User } from '../utils/types/data';
 import { api } from '../utils/api/api';
 
-const customStyles = {
-    content: {
-      width: '100%',
-      height: '70%',
-    },
-    overlay: {
-      background: 'rgba(0, 0, 0, 0.4)',
-    },
-  };
-  
-  Modal.setAppElement('#root');
-  
- function navbar(){
-return (<nav><h1>Diario </h1> <hr/></nav> )
+function NavBar() {
+  return (
+    <nav className="navbar">
+      {/* Aqui combinamos o container (que limita em 800px) com o nav-content (que faz o flexbox) */}
+      <div className="container nav-content">
+        
+        {/* Item 1: Logo/Título - Fica na ESQUERDA */}
+        <h1>Diário</h1>
+
+        {/* Item 2: Links - Fica no CENTRO */}
+        <div className="nav-links">
+          <a href="/home">Início</a>
+          <a href="/creat">Escrever</a>
+        </div>
+
+        {/* Item 3: Perfil - Fica na DIREITA */}
+        <div className="user-profile">
+           {/* Adicione o seu Avatar aqui. O justify-content divide o espaço entre estes 3 blocos */}
+        </div>
+        
+      </div>
+    </nav>
+  );
 }
- 
- export default navbar;
+
+export default NavBar;
