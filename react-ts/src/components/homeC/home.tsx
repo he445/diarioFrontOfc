@@ -28,7 +28,7 @@ function Home() {
       title: newPost.title,
       content: newPost.content,
       authorId: userId
-    }as Post;
+    } as Post;
 
     try {
       await api.creat(postPayload);
@@ -86,8 +86,14 @@ function Home() {
     }
   };
 
-  const searchPost = list.filter((item) => {
-    return item.title.toLocaleLowerCase().includes(search.toLocaleLowerCase());
+  // ==========================================
+  // NOVO FILTRO: MOSTRA SÓ OS POSTS DO USUÁRIO
+  // ==========================================
+  const currentUserId = getUserId();
+  const myPosts = list.filter((item) => {
+    const isMine = item.authorId === currentUserId; // Verifica se o autor é quem tá logado
+    const matchesSearch = item.title.toLocaleLowerCase().includes(search.toLocaleLowerCase()); // Verifica a pesquisa
+    return isMine && matchesSearch; // Tem que ser os dois para aparecer
   });
 
   function updatePage() {
@@ -106,7 +112,7 @@ function Home() {
         <input
           className="search-input"
           type="text"
-          placeholder="Buscar textos ou poemas..."
+          placeholder="Buscar nos meus textos ou poemas..."
           onChange={(e) => setSearch(e.currentTarget.value)}
         />
       </div>
@@ -169,42 +175,41 @@ function Home() {
       {!isEditing && (
         <section className="feed-section">
           <ul className="feed-list">
-            {searchPost.map((item) => {
-              // Verifica se o usuário atual é o dono do post para mostrar os botões
-              const isOwner = item.authorId === getUserId();
-
+            
+            {/* Agora mapeamos 'myPosts' em vez de 'searchPost' */}
+            {myPosts.map((item) => {
               return (
                 <li className="post-card" key={item.id}>
                   <h2 className="post-title">{item.title}</h2>
                   <p className="post-text">{item.content}</p>
                   
-                  {isOwner && (
-                    <div className="post-actions">
-                      <button 
-                        className="btn-action edit" 
-                        onClick={() => {
-                          setUniqueList(item);
-                          setIsEditing(true);
-                          window.scrollTo(0, 0); // Sobe a tela para o editor
-                        }}
-                      >
-                        Editar
-                      </button>
-                      <button 
-                        className="btn-action delete" 
-                        onClick={() => deleteList(item.id, item.authorId)}
-                      >
-                        Excluir
-                      </button>
-                    </div>
-                  )}
+                  {/* Como a lista já é só do dono, os botões sempre aparecem */}
+                  <div className="post-actions">
+                    <button 
+                      className="btn-action edit" 
+                      onClick={() => {
+                        setUniqueList(item);
+                        setIsEditing(true);
+                        window.scrollTo(0, 0); // Sobe a tela para o editor
+                      }}
+                    >
+                      Editar
+                    </button>
+                    <button 
+                      className="btn-action delete" 
+                      onClick={() => deleteList(item.id, item.authorId)}
+                    >
+                      Excluir
+                    </button>
+                  </div>
                 </li>
               );
             })}
             
-            {searchPost.length === 0 && (
+            {/* Mensagem caso o diário esteja vazio */}
+            {myPosts.length === 0 && (
               <div className="empty-state">
-                <p>Nenhum texto encontrado.</p>
+                <p>O seu diário está vazio. Escreva sua primeira história acima ou refine sua busca.</p>
               </div>
             )}
           </ul>
